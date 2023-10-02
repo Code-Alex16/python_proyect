@@ -1,8 +1,7 @@
 # Mostrar el producto escalar de dos vectores y modificar los valores si es necesario
 
 def menu2():
-    print("1.- Vector 1")
-    print("2.- Vector 2")
+    return "1.- Vector 1 \n2.- Vector 2"
 
 def productoEscalar(v1,v2):
     producto = 0
@@ -12,31 +11,33 @@ def productoEscalar(v1,v2):
 
 def ModificarVector1(v1):
     elemento_a_Modificar = int(input(f" Ingrese el elemento que desea reemplazar: {v1}"))
+    v1 = list(v1)
     if elemento_a_Modificar in v1:
         for i in range(len(v1)):
             if v1[i] == elemento_a_Modificar:
                 v1[i] = int(input("Ingrese el nuevo elemento: "))
-    return v1
+    print(v1)
+    return tuple(v1)
 
 
 def ModificarVector2(v2):
     elemento_a_Modificar = int(input(f" Ingrese el elemento que desea reemplazar: {v2}"))
+    v2 = list(v2)
     if elemento_a_Modificar in v2:
         for i in range(len(v2)):
             if v2[i] == elemento_a_Modificar:
                 v2[i] = int(input("Ingrese el nuevo elemento: "))
-    return v2
+    print(v2)
+    return tuple(v2)
 
 
 def Modificacion(v1,v2):
-    menu2()
+    print(menu2())
     valor = int(input("Ingrese a que vectro va a modificar: "))
     if(valor == 1):
-        v1 = ModificarVector1(v1)
-        productoEscalar(v1,v2)
+        productoEscalar(ModificarVector1(v1),v2)
     elif(valor == 2):
-        v2 = ModificarVector2(v2)
-        productoEscalar(v1,v2)
+        productoEscalar(v1,ModificarVector2(v2))
     else:
         print("Opcion invalida vuelva a intentar")
 
@@ -50,14 +51,16 @@ def main():
     print("3.- Salir")
 
     match int(input("Elija una opcion: ")):
-        case 1: print(productoEscalar(vector1,vector2))
-        case 2: print(Modificacion(vector1,vector2))
-        case 3: return False
+        case 1: 
+            print(productoEscalar(vector1,vector2)) 
+            return True
+        case 2: 
+            print(Modificacion(vector1,vector2))
+            return True 
+        case 3: 
+            return False
 
 if __name__ == '__main__':
-    varia = True
-    while varia:
-        if True:
-            main()
-        else:
-            varia = main()
+    value = True
+    while value:
+        value = main()
