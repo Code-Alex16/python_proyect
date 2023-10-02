@@ -1,5 +1,4 @@
 # Mostrar el producto escalar de dos vectores y modificar los valores si es necesario
-
 def menu2():
     return "1.- Vector 1 \n2.- Vector 2"
 
